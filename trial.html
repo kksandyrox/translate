@@ -1,0 +1,22 @@
+<html>
+<body>
+	
+	<div id = "name">Must appear here</div>
+	<script>
+	function abc()
+	{
+		var http_request = new XMLHttpRequest();
+		http_request.onreadystatechange = function(){
+			if(http_request.readyState == 4 ){
+				var json = JSON.parse(http_request.responseText);
+				document.getElementByID("name").innerHTML = json.matches;
+				alert("ji");
+			}
+		}
+		http_request.open('GET', 'http://api.mymemory.translated.net/get?q=World&langpair=fr|en');
+		http_request.send();	
+	}
+	</script>
+	<button type = "button" onclick = "abc()">Click me</button>
+</body>
+</html>
